@@ -7,6 +7,11 @@ import {
 } from 'Redux/types';
 
 export type LoginType = {
+  data: {
+    _id: string;
+    email: string;
+    role: string;
+  };
   accessToken: string;
   message: string;
   success: boolean;

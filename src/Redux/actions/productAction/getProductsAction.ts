@@ -26,6 +26,7 @@ export const getProduct =
       });
 
       const res = await productInstance.post('getProduct', userData);
+
       switch (res.data.success) {
         case true:
           return dispatch({
