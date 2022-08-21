@@ -58,7 +58,7 @@ const userInstance = axios.create({
       return Promise.resolve(res);
     },
     async (err) => {
-      if (err.response.status === 469) {
+      if (err.response.status === 401) {
         try {
           const login = Store.getState().login;
           console.log(login);
