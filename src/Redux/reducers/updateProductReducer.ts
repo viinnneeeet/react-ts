@@ -1,66 +1,67 @@
 import {
-  LOADING_GET_ORDER,
-  GET_ORDER_SUCCESS,
-  GET_ORDER_FAILED,
-  GET_ORDER_NETWORK_ERROR,
-  RESET_GET_ORDER,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAILED,
+  UPDATE_PRODUCT_NETWORK_ERROR,
+  LOADING_UPDATE_PRODUCT,
+  RESET_UPDATE_PRODUCT,
 } from 'Redux/types';
 import {
-  GetOrderDispatchTypes,
-  OrdersType,
-} from 'Redux/actions/orderAction/getOrderActionTypes';
+  UpdateProductDispatchType,
+  UpdateProductType,
+} from 'Redux/actions/productAction/updateProductActionTypes';
 
 type InitialStateType = {
-  data?: OrdersType;
   isLoading: boolean;
   success: boolean;
   failed: boolean;
-  networkError: boolean;
+  network: boolean;
+  data?: UpdateProductType;
 };
 
-const initialState: InitialStateType = {
+const initialState = {
   isLoading: false,
   success: false,
   failed: false,
-  networkError: false,
+  network: false,
 };
 
 export default (
   state: InitialStateType = initialState,
-  action: GetOrderDispatchTypes
+  action: UpdateProductDispatchType
 ): InitialStateType => {
   switch (action.type) {
-    case LOADING_GET_ORDER:
+    case LOADING_UPDATE_PRODUCT:
       return {
         isLoading: true,
         success: false,
         failed: false,
-        networkError: false,
+        network: false,
       };
-    case GET_ORDER_SUCCESS:
+    case UPDATE_PRODUCT_SUCCESS:
       return {
         isLoading: false,
         success: true,
         failed: false,
-        networkError: false,
+        network: false,
         data: action.payload,
       };
-    case GET_ORDER_FAILED:
+    case UPDATE_PRODUCT_FAILED:
       return {
         isLoading: false,
         success: false,
         failed: true,
-        networkError: false,
+        network: false,
         data: action.payload,
       };
-    case GET_ORDER_NETWORK_ERROR:
+    case UPDATE_PRODUCT_NETWORK_ERROR:
       return {
         isLoading: false,
         success: false,
         failed: false,
-        networkError: true,
+        network: true,
+        data: action.payload,
       };
-    case RESET_GET_ORDER:
+    case RESET_UPDATE_PRODUCT:
       return state;
     default:
       return state;

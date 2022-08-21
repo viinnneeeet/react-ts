@@ -25,7 +25,7 @@ const initialState = {
   networkError: false,
 };
 
-const login = (
+export default (
   state: InitialStateType = initialState,
   action: LoginDispatchTypes
 ): InitialStateType => {
@@ -67,5 +67,3 @@ const login = (
       return state;
   }
 };
-
-export default login;

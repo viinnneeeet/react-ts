@@ -25,7 +25,7 @@ const initialState: InitialStateType = {
   networkError: false,
 };
 
-const addProduct = (
+export default (
   state: InitialStateType = initialState,
   action: AddProductDispatchTypes
 ): InitialStateType => {
@@ -66,5 +66,3 @@ const addProduct = (
       return state;
   }
 };
-
-export default addProduct;

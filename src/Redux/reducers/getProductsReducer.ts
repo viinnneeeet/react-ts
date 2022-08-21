@@ -25,7 +25,7 @@ const initialState: InitialStateT = {
   failed: false,
   network: false,
 };
-const getProduct = (
+export default (
   state: InitialStateT = initialState,
   action: GetProductDispatchTypes
 ): InitialStateT => {
@@ -66,5 +66,3 @@ const getProduct = (
       return state;
   }
 };
-
-export default getProduct;
