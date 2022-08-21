@@ -16,6 +16,7 @@ const Orders: React.FC = (): JSX.Element => {
   const [quantity, setQuantity] = useState<number | undefined>();
   const [productId, setProductId] = useState<string | undefined>();
 
+  const login = useSelector(({ login }: RootStore) => login);
   const order = useSelector(({ order }: RootStore) => order);
   const products = useSelector(({ products }: RootStore) => products);
   const dispatch = useDispatch();
@@ -33,17 +34,21 @@ const Orders: React.FC = (): JSX.Element => {
   };
 
   const getProductRequest = () => {
-    const getProductReq = {
-      initiatedBy: 'admin',
-    };
-    return dispatch(getProduct(getProductReq));
+    if (login.data?.data.role === 'admin') {
+      const getProductReq = {
+        initiatedBy: login.data?.data.role,
+      };
+      return dispatch(getProduct(getProductReq));
+    }
   };
 
   const getOrderRequest = () => {
-    const getOrderReq = {
-      initiatedBy: 'admin',
-    };
-    return dispatch(getOrder(getOrderReq));
+    if (login.data?.data.role === 'admin') {
+      const getOrderReq = {
+        initiatedBy: login.data?.data.role,
+      };
+      return dispatch(getOrder(getOrderReq));
+    }
   };
 
   useEffect(() => {
