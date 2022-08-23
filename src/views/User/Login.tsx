@@ -30,16 +30,18 @@ const Login: React.FC = (): JSX.Element => {
     e.preventDefault();
     loginRequest();
   };
+
   useEffect(() => {
     if (login.success) {
       setEmail('');
       setPassword('');
       localStorage.setItem(
         'accessToken',
-        login.data ? login.data.accessToken : ''
+        login.data?.accessToken ? login.data.accessToken : ''
       );
     }
   }, [login.success]);
+
   return (
     <div>
       <label htmlFor="email">Enter Email</label>

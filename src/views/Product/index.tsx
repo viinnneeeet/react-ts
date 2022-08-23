@@ -34,11 +34,15 @@ const Product: React.FC = (): JSX.Element => {
     if (name === 'name') setName(value);
     if (name === 'price') setPrice(Number(value));
   }
+  const handleLogOut = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    localStorage.clear();
+  };
 
-  function handleSubmit(e: React.FormEvent<HTMLInputElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     addProductRequest();
-  }
+  };
   const handleUpdateSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     updateProductRequest();
@@ -50,21 +54,23 @@ const Product: React.FC = (): JSX.Element => {
   };
 
   const getProductRequest = () => {
-    if (login.data?.data.role === 'admin') {
+    if (login.data?.user.role) {
       const getProductReq = {
-        initiatedBy: login.data?.data.role,
+        initiatedBy: login.data?.user.role,
       };
       return dispatch(getProduct(getProductReq));
     }
   };
 
   const addProductRequest = () => {
-    const addProductReq = {
-      initiatedBy: 'admin',
-      name,
-      price,
-    };
-    return dispatch(addProduct(addProductReq));
+    if (login.data?.user.role) {
+      const addProductReq = {
+        initiatedBy: login.data?.user.role,
+        name,
+        price,
+      };
+      return dispatch(addProduct(addProductReq));
+    }
   };
 
   const updateProductRequest = () => {
@@ -96,6 +102,7 @@ const Product: React.FC = (): JSX.Element => {
 
   return (
     <div>
+      <input type="button" value="Logout" onClick={handleLogOut} />
       <table>
         <thead>
           <tr>

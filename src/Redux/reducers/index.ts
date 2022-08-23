@@ -1,18 +1,20 @@
 import { combineReducers } from 'redux';
 
 //Reducer Files
-import getProductReducer from './getProductsReducer';
-import getOrder from './getOrderReducer';
+import products from './getProductsReducer';
+import order from './getOrderReducer';
 import addProduct from './addProductReducer';
 import login from './loginReducer';
 import updateProduct from './updateProductReducer';
+import addOrder from './addOrderReducer';
 
 const RootReducer = combineReducers({
-  products: getProductReducer,
-  order: getOrder,
+  products,
+  order,
   addProduct,
   login,
   updateProduct,
+  addOrder,
 });
 
 export default RootReducer;

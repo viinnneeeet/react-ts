@@ -7,14 +7,16 @@ import {
 } from 'Redux/types';
 
 export type OrdersType = {
-  order: OrderType[];
+  orders: OrderType[];
 };
 
 export type OrderType = {
   _id: string;
   quantity: number;
+  productId: string;
   productName: string;
   price: number;
+  totalPrice: number;
   message: string;
 };
 

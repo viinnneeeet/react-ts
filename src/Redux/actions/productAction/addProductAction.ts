@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import axios from 'axios';
+import { productInstance } from 'Config/Axios/axios';
 
 import { AddProductDispatchTypes } from 'Redux/actions/productAction/addProductActionTypes';
 import {
@@ -26,10 +26,7 @@ export const addProduct =
   async (dispatch: Dispatch<AddProductDispatchTypes>) => {
     try {
       dispatch({ type: LOADING_ADD_PRODUCT });
-      const res = await axios.post(
-        'http://localhost:8626/products/addProduct',
-        userData
-      );
+      const res = await productInstance.post('addProduct', userData);
       switch (res.data.success) {
         case true:
           return dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data });

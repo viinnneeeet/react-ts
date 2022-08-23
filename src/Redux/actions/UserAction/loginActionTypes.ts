@@ -7,7 +7,7 @@ import {
 } from 'Redux/types';
 
 export type LoginType = {
-  data: {
+  user: {
     _id: string;
     email: string;
     role: string;
