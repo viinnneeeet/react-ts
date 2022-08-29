@@ -7,12 +7,14 @@ import addProduct from './addProductReducer';
 import login from './loginReducer';
 import updateProduct from './updateProductReducer';
 import addOrder from './addOrderReducer';
+import signupUser from './signupUserReducer';
 
 const RootReducer = combineReducers({
+  signupUser,
+  login,
   products,
   order,
   addProduct,
-  login,
   updateProduct,
   addOrder,
 });

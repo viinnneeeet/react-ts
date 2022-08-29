@@ -44,27 +44,31 @@ const Login: React.FC = (): JSX.Element => {
 
   return (
     <div>
-      <label htmlFor="email">Enter Email</label>
-      <input
-        type="text"
-        name="email"
-        id="email"
-        placeholder="Email"
-        value={email}
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="password">Enter Password </label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Password"
-        value={password}
-        onChange={handleChange}
-      />
-      <br />
-      <input type="button" value="submit" onClick={handleSubmit} />
+      <form>
+        <label htmlFor="email">Enter Email</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleChange}
+          autoComplete="on"
+        />
+        <br />
+        <label htmlFor="password">Enter Password </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          value={password}
+          onChange={handleChange}
+          autoComplete="on"
+        />
+        <br />
+        <input type="button" value="submit" onClick={handleSubmit} />
+      </form>
     </div>
   );
 };
